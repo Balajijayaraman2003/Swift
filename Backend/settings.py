@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-6qn(q@=sh*w6ofi_6e8yz@!dal5l-iwo_0wmy9j4&^rt(+-6@x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'jazzmin',
     'rest_framework',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,19 +45,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Authentication',
     'Events',
-    'Finance_Management'
+    'Finance_Management',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # React dev server
+]
 ROOT_URLCONF = 'Backend.urls'
 
 TEMPLATES = [
